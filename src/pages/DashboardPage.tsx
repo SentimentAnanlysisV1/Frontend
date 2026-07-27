@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-import { analyzeConversation } from '../services/api';
+import { analyzeConversation, signOut } from '../services/api';
 
 const COLORS = ['#10b981', '#3b82f6', '#ef4444'];
 
 function DashboardPage() {
+  const navigate = useNavigate();
   const [text, setText] = useState('');
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
@@ -40,7 +42,7 @@ function DashboardPage() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
         <motion.header initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-black/20">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">AI Conversation Sentiment Analyzer</p>
+          <div className="flex items-center justify-between gap-4"><p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">AI Conversation Sentiment Analyzer</p><button className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:border-emerald-400 hover:text-emerald-300" onClick={() => { signOut(); navigate('/login'); }}>Sign out</button></div>
           <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">Modern conversation intelligence for support and CX teams</h1>
           <p className="mt-3 max-w-3xl text-sm text-slate-400 sm:text-base">Upload or paste a conversation transcript to analyze overall tone, sentiment, emotion, and recommended actions.</p>
         </motion.header>
