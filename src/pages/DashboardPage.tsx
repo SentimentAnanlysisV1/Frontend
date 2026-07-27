@@ -61,8 +61,8 @@ function DashboardPage() {
             {error ? <p className="mt-3 text-sm text-rose-400">{error}</p> : null}
           </motion.form>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-black/20">
+          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="h-full">
+            <div className="h-full rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-black/20">
               <h2 className="text-xl font-semibold">Live insights</h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {[
